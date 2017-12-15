@@ -13,18 +13,34 @@
 	$(function(){
 		//利用ajax发请求 客户级别
 		var url = "${pageContext.request.contextPath}/dict_findByCode.action";
-		var param = {"dict_type_code":"001"};
+		var param = {"dict_type_code":"006"};
 		$.post(url,param,function(data){
 			//i 索引 n对象
 			$(data).each(function(i,n){
 			/* 	alert(i+" : "+n.dict_item_name);  */
 				//jq的DOM操作
 				//先获取值栈中的值
-				var vsId = "${model.type.dict_id}";
+				var vsId = "${model.level.dict_id}";
 				if(vsId == n.dict_id){
-				$("#type").append("<option value='"+n.dict_id+"' selected>"+n.dict_item_name+"</option>");
+				$("#levelId").append("<option value='"+n.dict_id+"' selected>"+n.dict_item_name+"</option>");
 				}else{
-				$("#type").append("<option value='"+n.dict_id+"'>"+n.dict_item_name+"</option>");
+				$("#levelId").append("<option value='"+n.dict_id+"'>"+n.dict_item_name+"</option>");
+				}
+			});
+		},"json");
+		//客户来源
+		var param = {"dict_type_code":"002"};
+		$.post(url,param,function(data){
+			//i 索引 n对象
+			$(data).each(function(i,n){
+				/* alert(i+" : "+n.dict_item_name); */
+				//jq的DOM操作
+				//获取值栈中的值
+				var vsId = "${model.source.dict_id}";
+				if(vsId == n.dict_id){
+				$("#sourceId").append("<option value='"+n.dict_id+"' selected>"+n.dict_item_name+"</option>");
+				}else{
+				$("#sourceId").append("<option value='"+n.dict_id+"'>"+n.dict_item_name+"</option>");
 				}
 			});
 		},"json");
@@ -49,7 +65,7 @@
 	<FORM id=form1 name=form1
 		action="${pageContext.request.contextPath }/book_update.action" method="post" enctype="multipart/form-data"> 
 		<!-- 隐藏图书主键 -->
-		<input type="hidden" name="bid" value="${model.bid }"/>
+		<input type="hidden" name="cust_id" value="${model.bid }"/>
 
 		<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
 			<TBODY>
@@ -78,37 +94,39 @@
 							<TR>
 								<td>图书名称 ：</td>
 								<td>
-								<INPUT class=textbox id=sChannel2 style="WIDTH: 180px" maxLength=50 name="bname" value="${model.bname }">
+								<INPUT class=textbox id=sChannel2 style="WIDTH: 180px" maxLength=50 name="bname">
 								</td>
 							</TR>
 							<TR>
 								<td>图书类型 ：</td>
 								<td>
-									<select name="type.dict_id" id="type"></select>
+									<!-- <select name="source.dict_id" id="sourceId"></select> -->
+									<select name="source.type" id="sourceId"></select>
 								</td>
 							</TR>
 							<TR>
-								<td>作&nbsp;&nbsp;者 ：</td>
+								<td>作者：</td>
 								<td>
-								<INPUT class=textbox id=sChannel2 style="WIDTH: 180px" maxLength=50 name="author" value="${model.author }">
+								<INPUT class=textbox id=sChannel2 style="WIDTH: 180px" maxLength=50 name="author">
 								</td>
 							</TR>
 							<TR>
-								<td>出 版 社 ：</td>
+								<td>出版社 ：</td>
 								<td>
-								<INPUT class=textbox id=sChannel2 style="WIDTH: 180px" maxLength=50 name="publish" value="${model.publish }">
+								<INPUT class=textbox id=sChannel2 style="WIDTH: 180px" maxLength=50 name="publish">
 								</td>
 							</TR>
 							<TR>
 								<td>出版时间 ：</td>
 								<td>
-								<INPUT class=textbox id="nextTimeId" style="WIDTH: 180px" maxLength=50 name="publish_time" value="${model.publish_time }">
+								<!-- <INPUT class=textbox id=sChannel2 style="WIDTH: 180px" maxLength=50 name="publish_time"> -->
+								<INPUT class=textbox id="nextTimeId" style="WIDTH: 180px" maxLength=50 name="publish_time">
 								</td>
 							</TR>
 							<TR>
-								<td>状&nbsp;&nbsp;态 ：</td>
+								<td>状态：</td>
 								<td>
-								<INPUT class=textbox id=sChannel2 style="WIDTH: 180px" maxLength=50 name="state" value="${model.state }">
+								<INPUT class=textbox id=sChannel2 style="WIDTH: 180px" maxLength=50 name="state">
 								</td>
 							</TR>
 							<tr>

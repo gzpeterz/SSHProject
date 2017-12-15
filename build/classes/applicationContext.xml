@@ -62,8 +62,15 @@
 		<!-- 引入映射的配置文件 -->
 		<property name="mappingResources">
 			<list>
-				<value>com/hc/bean/User.hbm.xml</value>
-				<value>com/hc/bean/Dict.hbm.xml</value>
+				<!-- <value>com/ithc/bean/User.hbm.xml</value>
+				value>com/ithc/bean/Customer.hbm.xml</value>
+				<value>com/ithc/bean/Dict.hbm.xml</value>
+				<value>com/ithc/bean/LinkMan.hbm.xml</value>
+					
+				
+				<value>com/ithc/bean/Visit.hbm.xml</value> -->
+				<value>com/hc/bean/Money.hbm.xml</value>
+			<!-- 	<value>com/hc/bean/Lend.hbm.xml</value> -->
 				<value>com/hc/bean/Book.hbm.xml</value>
 				<value>com/hc/bean/Reader.hbm.xml</value>
 			</list>
@@ -78,64 +85,40 @@
 	<!-- 开启事务的注解 需要到service层开启事物注解-->
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
-	
-	<!-- 用户模块 -->
-	<!-- action -->
-	<bean id="userAction" class="com.hc.action.UserAction" scope="prototype">
-		<property name="userService" ref="userService"/>	
+	<!--罚款模块  -->
+	<bean id="moneyAction" class="com.hc.action.MoneyAction" scope="prototype">
+	<property name="moneyService" ref="moneyService"></property>
 	</bean>
-	<!-- service -->
-	<bean id="userService" class="com.hc.service.UserServiceImpl">
-		<property name="userDao" ref="userDao"/>	
+	<bean id="moneyService" class="com.hc.service.MoneyServiceImpl" >
+	<property name="moneyDao" ref="moneyDao"></property>
 	</bean>
-	<!-- dao -->
-	<bean id="userDao" class="com.hc.dao.UserDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"/>	
+	<bean id="moneyDao" class="com.hc.dao.MoneyDaoImpl" >
+	<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
-	
-	<!-- 数据字典 -->
-	<!-- action -->
-	<bean id="dictAction" class="com.hc.action.DictAction" scope="prototype">
-		<property name="dictService" ref="dictService"/>	
-	</bean>
-	<!-- service -->
-	<bean id="dictService" class="com.hc.service.DictServiceImpl">
-		<property name="dictDao" ref="dictDao"/>	
-	</bean>
-	<!-- dao -->
-	<bean id="dictDao" class="com.hc.dao.DictDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"/>	
-	</bean>
-	
-	
-	<!-- 图书管理模块 -->
-	<!-- action -->
-	<bean id="bookAction" class="com.hc.action.BookAction" scope="prototype">
-		<property name="bookService" ref="bookService"/>	
-	</bean>
-	<!-- service -->
-	<bean id="bookService" class="com.hc.service.BookServiceImpl">
-		<property name="bookDao" ref="bookDao"/>	
-	</bean>
-	<!-- dao -->
-	<bean id="bookDao" class="com.hc.dao.BookDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"/>	
-	</bean>
-	
-	<!-- 读者模块 -->
-	<!-- action -->
 	<bean id="readerAction" class="com.hc.action.ReaderAction" scope="prototype">
-	    <property name="readerService" ref="readerService"/>
+	<property name="readerService" ref="readerService"></property>
 	</bean>
-	<!-- Service -->
-	<bean id="readerService" class="com.hc.service.ReaderServiceImpl">
-	    <property name="readerDao" ref="readerDao"/>
+	<bean id="readerService" class="com.hc.service.ReaderServiceImpl" >
+	<property name="readerDao" ref="readerDao"></property>
 	</bean>
-	<!-- dao -->
-	<bean id="readerDao" class="com.hc.dao.ReaderDaoImpl">
-	    <property name="sessionFactory" ref="sessionFactory"/>
+	<bean id="readerDao" class="com.hc.dao.ReaderDaoImpl" >
+	<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+	
+	
+		<bean id="bookAction" class="com.hc.action.BookAction" scope="prototype">
+	<property name="bookService" ref="bookService"></property>
+	</bean>
+	<bean id="bookService" class="com.hc.service.BookServiceImpl" >
+	<property name="bookDao" ref="bookDao"></property>
+	</bean>
+	<bean id="bookDao" class="com.hc.dao.BookDaoImpl" >
+	<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+			
+	
 </beans>
 
 

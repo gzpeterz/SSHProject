@@ -207,7 +207,7 @@ A.active {
 											<TBODY>
 												<TR>
 													<TD class=menuSmall><A class=style2
-														href="${pageContext.request.contextPath }/money_initAddUI.action"
+														href="${pageContext.request.contextPath }/money_goMove.action"
 														target=main>－ 新增罚款记录</A></TD>
 												</TR>
 												<TR>

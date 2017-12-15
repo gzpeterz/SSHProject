@@ -81,7 +81,7 @@ $(function(){
 								</td>
 							</TR>
 							<TR>
-								<td>学&nbsp;&nbsp;号 ：</td>
+								<td>学&nbsp;&nbsp;&nbsp;&nbsp;号 ：</td>
 								<td>
 								<INPUT class=textbox id=sChannel2 style="WIDTH: 180px" maxLength=50 name="reader.sid">
 								</td>

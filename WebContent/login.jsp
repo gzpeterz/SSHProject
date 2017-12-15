@@ -40,8 +40,8 @@ style="LEFT: 0px; POSITION: absolute; TOP: 0px; BACKGROUND-COLOR: #0066ff"></DIV
 <TABLE cellSpacing=0 cellPadding=0 width=900 align=center border=0>
   <TBODY>
   <TR>
-    <!-- <TD style="HEIGHT: 105px"><IMG src="images/login_1.gif" 
-  border=0></TD> --></TR>
+    <TD style="HEIGHT: 105px"><IMG src="images/login_1.gif" 
+  border=0></TD></TR>
   <TR>
     <TD background=images/login_2.jpg height=300>
       <TABLE height=300 cellPadding=0 width=900 border=0>
@@ -57,7 +57,8 @@ style="LEFT: 0px; POSITION: absolute; TOP: 0px; BACKGROUND-COLOR: #0066ff"></DIV
                 <TD style="HEIGHT: 28px" width=80>登 录 名：</TD>
                 <TD style="HEIGHT: 28px" width=150>
                 <INPUT id="user_code" style="WIDTH: 130px" name="user_code"></TD>
-                <TD style="HEIGHT: 28px" width=370><SPAN id=RequiredFieldValidator3 
+                <TD style="HEIGHT: 28px" width=370><SPAN 
+                  id=RequiredFieldValidator3 
                   style="FONT-WEIGHT: bold; VISIBILITY: hidden; COLOR: white">请输入登录名</SPAN></TD></TR>
               <TR>
                 <TD style="HEIGHT: 28px">登录密码：</TD>
@@ -80,14 +81,16 @@ style="LEFT: 0px; POSITION: absolute; TOP: 0px; BACKGROUND-COLOR: #0066ff"></DIV
                 <TD style="HEIGHT: 18px"></TD></TR>
               <TR>
                 <TD></TD>
-                <TD>
-                <!-- <INPUT id=btn 
+                <TD><INPUT id=btn 
                   style="BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px" 
-                  type=image src="images/login_button.gif" name=btn>  -->
-                  <INPUT id="btn" type="submit" name="btn" value="登录系统"/>
-                  <!-- <a href="register.jsp">注册</a> -->
+                  type=image src="images/login_button.gif" name=btn> 
+                  <a href="register.jsp">注册</a>
               </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
 <TR>
-    <!-- <TD><IMG src="images/login_3.jpg" 
-border=0></TD> --></TR></TBODY></TABLE></DIV></DIV>
+    <TD><IMG src="images/login_3.jpg" 
+border=0></TD></TR></TBODY></TABLE></DIV></DIV>
 </FORM></BODY></HTML>
+
+
+</body>
+</html>

@@ -9,6 +9,18 @@
 <LINK href="${pageContext.request.contextPath }/css/Style.css" type=text/css rel=stylesheet>
 <LINK href="${pageContext.request.contextPath }/css/Manage.css" type=text/css rel=stylesheet>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		//发送异步请求，获取所有客户
+		var url = "${pageContext.request.contextPath}/reader_findAll.action";
+		$.post(url,function(data){
+			$(data).each(function(){
+				/* alert(model.customer.cust_id+"..."); */
+					$("#customerId").append("<option value='"+this.cust_id+"' selected>"+this.cust_name+"</option>");
+			});
+		},"json");
+	});
+</script>
 <!-- 日期插件，使用jquery -->
 <script type="text/javascript" src="${pageContext.request.contextPath }/jquery/jquery-1.4.2.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/jquery/jquery.datepick.css" type="text/css">
@@ -26,7 +38,7 @@
 </HEAD>
 <BODY>
 	<FORM id=form1 name=form1
-		action="${pageContext.request.contextPath }/reader_save.action" method="post" enctype="multipart/form-data">
+		action="${pageContext.request.contextPath }/linkman_save.action" method=post>
 		<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
 			<TBODY>
 				<TR>
@@ -52,32 +64,32 @@
 						</TABLE>
 						<TABLE cellSpacing=0 cellPadding=5  border=0>
 							<tr>
-								<td>学&nbsp;&nbsp;号 ：</td>
+								<td>学&nbsp;&nbsp;&nbsp;&nbsp;号 ：</td>
 								<td>
 								<INPUT class=textbox id=sChannel2 style="WIDTH: 180px" maxLength=50 name="sid">
 								</td>
 							</tr>
 							<TR>
-								<td>姓&nbsp;&nbsp;名 ：</td>
+								<td>姓&nbsp;&nbsp;&nbsp;&nbsp;名 ：</td>
 								<td>
 								<INPUT class=textbox id=sChannel2 style="WIDTH: 180px" maxLength=50 name="sname">
 								</td>
 							</TR>
 							<TR>
-								<td>性&nbsp;&nbsp;别 ：</td>
+								<td>性&nbsp;&nbsp;&nbsp;&nbsp;别 ：</td>
 								<td>
-								<input type="radio" value="男" name="sex" checked="checked">男
+								<input type="radio" value="男" name="sex">男
 								<input type="radio" value="女" name="sex">女
 								</td>
 							</TR>
 							<TR>
-								<td>班&nbsp;&nbsp;级 ：</td>
+								<td>班&nbsp;&nbsp;&nbsp;&nbsp;级 ：</td>
 								<td>
 								<INPUT class=textbox id=sChannel2 style="WIDTH: 180px" maxLength=50 name="grade">
 								</td>
 							</TR>
 							<TR>
-								<td>院&nbsp;&nbsp;系 ：</td>
+								<td>院&nbsp;&nbsp;&nbsp;&nbsp;系 ：</td>
 								<td>
 								<INPUT class=textbox id=sChannel2 style="WIDTH: 180px" maxLength=50 name="dept">
 								</td>
@@ -90,13 +102,13 @@
 								</td>
 							</TR>
 							<TR>
-								<td>状&nbsp;&nbsp;态 ：</td>
+								<td>状&nbsp;&nbsp;&nbsp;&nbsp;态 ：</td>
 								<td>
 								<INPUT class=textbox id=sChannel2 style="WIDTH: 180px" maxLength=50 name="state">
 								</td>
 							</TR>
 							<TR>
-								<td>密&nbsp;&nbsp;码 ：</td>
+								<td>密&nbsp;&nbsp;&nbsp;&nbsp;码 ：</td>
 								<td>
 								<INPUT class=textbox id=sChannel2 style="WIDTH: 180px" maxLength=50 name="spassword">
 								</td>

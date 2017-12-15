@@ -23,18 +23,34 @@
 	$(function(){
 		//利用ajax发请求 客户级别
 		var url = "${pageContext.request.contextPath}/dict_findByCode.action";
-		var param = {"dict_type_code":"001"};
+		var param = {"dict_type_code":"006"};
 		$.post(url,param,function(data){
 			//i 索引 n对象
 			$(data).each(function(i,n){
 			/* 	alert(i+" : "+n.dict_item_name);  */
 				//jq的DOM操作
 				//先获取值栈中的值
-				var vsId = "${model.type.dict_id}";
+				var vsId = "${model.level.dict_id}";
 				if(vsId == n.dict_id){
-				$("#type").append("<option value='"+n.dict_id+"' selected>"+n.dict_item_name+"</option>");
+				$("#levelId").append("<option value='"+n.dict_id+"' selected>"+n.dict_item_name+"</option>");
 				}else{
-				$("#type").append("<option value='"+n.dict_id+"'>"+n.dict_item_name+"</option>");
+				$("#levelId").append("<option value='"+n.dict_id+"'>"+n.dict_item_name+"</option>");
+				}
+			});
+		},"json");
+		//客户来源
+		var param = {"dict_type_code":"002"};
+		$.post(url,param,function(data){
+			//i 索引 n对象
+			$(data).each(function(i,n){
+				/* alert(i+" : "+n.dict_item_name); */
+				//jq的DOM操作
+				//获取值栈中的值
+				var vsId = "${model.source.dict_id}";
+				if(vsId == n.dict_id){
+				$("#sourceId").append("<option value='"+n.dict_id+"' selected>"+n.dict_item_name+"</option>");
+				}else{
+				$("#sourceId").append("<option value='"+n.dict_id+"'>"+n.dict_item_name+"</option>");
 				}
 			});
 		},"json");
@@ -80,7 +96,7 @@
 													</TD>
 													<td>图书类型</td>	
 													<td>
-														<select name="type.dict_id" id="type">
+														<select name="level.dict_id" id="levelId">
 															<option value="">--请选择--</option>
 														</select>
 													</td>	
@@ -90,6 +106,7 @@
 													</TD>	
 													<TD>
 													<INPUT class=button id=sButton2 type=submit value=" 筛选 " name=sButton2>
+													
 													</TD>
 												</TR>
 											</TBODY>
@@ -117,7 +134,7 @@
 														style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
 														<TD>${book.bid }</TD>
 														<TD>${book.bname }</TD>
-														<TD>${book.type.dict_item_name }</TD>
+														<TD>${book.source.type }</TD>
 														<TD>${book.author }</TD>
 														<TD>${book.publish }</TD>
 														<TD>${book.publish_time }</TD>

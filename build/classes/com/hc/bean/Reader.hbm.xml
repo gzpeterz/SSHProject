@@ -5,7 +5,7 @@
 <hibernate-mapping>
 	<class name="com.hc.bean.Reader" table="readerinfo">
 		<id name="sid" column="sid">
-			<generator class="assigned"/>
+			<generator class="native"/>
 		</id>
 		<property name="spassword" column="spassword"/>
 		<property name="sname" column="sname"/>
@@ -21,10 +21,10 @@
 			<one-to-many class="com.hc.bean.Lend"/>
 		</set> -->
 		<!-- 配置罚款记录映射 -->
-		<!-- <set name="money" cascade="delete">
+		<set name="money" cascade="delete">
 			<key column="sid"></key>		
 			<one-to-many class="com.hc.bean.Money"/>
-		</set> -->
+		</set> 
 	</class>
 	
 </hibernate-mapping> 

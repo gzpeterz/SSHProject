@@ -34,12 +34,5 @@ public interface BaseDao<T> {
 	 *  分页查询
 	 */
 	public PageBean<T> findByPage(Integer pageCode,Integer pageSize,DetachedCriteria criteria);
-	/**
-	 * 学生模块分页查询
-	 * @param pageCode
-	 * @param pageSize
-	 * @param criteria
-	 * @return
-	 */
-	public PageBean<T> findByPages(Integer pageCode,Integer pageSize,DetachedCriteria criteria);
+	
 }

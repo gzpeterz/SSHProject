@@ -14,11 +14,19 @@
 $(function(){
 	//利用ajax发请求 客户级别
 	var url = "${pageContext.request.contextPath}/dict_findByCode.action";
-	var param = {"dict_type_code":"001"};
+	var param = {"dict_type_code":"006"};
 	$.post(url,param,function(data){
 		//i 索引 n对象
 		$(data).each(function(i,n){ // i 是索引 ， n是对象 i和n只是随便取的一个名字
-			$("#type").append("<option value='"+n.dict_id+"'>"+n.dict_item_name+"</option>");
+			$("#levelId").append("<option value='"+n.dict_id+"'>"+n.dict_item_name+"</option>");
+		});
+	},"json");
+	//客户来源
+	var param = {"dict_type_code":"002"};
+	$.post(url,param,function(data){
+		//i 索引 n对象
+		$(data).each(function(i,n){
+			$("#sourceId").append("<option value='"+n.dict_id+"'>"+n.dict_item_name+"</option>");
 		});
 	},"json");
 });
@@ -67,7 +75,7 @@ $(function(){
 						</TABLE>
 						<TABLE cellSpacing=0 cellPadding=5  border=0>
 							<TR>
-								<td>图书编号 ：</td>
+								<td>图书编号：</td>
 								<td>
 								<INPUT class=textbox id=sChannel2 style="WIDTH: 180px" maxLength=50 name="bid">
 								</td>
@@ -81,17 +89,18 @@ $(function(){
 							<TR>
 								<td>图书类型 ：</td>
 								<td>
-									<select name="type.dict_id" id="type"></select>
+									<!-- <select name="source.dict_id" id="sourceId"></select> -->
+									<select name="source.type" id="sourceId"></select>
 								</td>
 							</TR>
 							<TR>
-								<td>作&nbsp;&nbsp;者 ：</td>
+								<td>作者：</td>
 								<td>
 								<INPUT class=textbox id=sChannel2 style="WIDTH: 180px" maxLength=50 name="author">
 								</td>
 							</TR>
 							<TR>
-								<td>出 版 社 ：</td>
+								<td>出版社 ：</td>
 								<td>
 								<INPUT class=textbox id=sChannel2 style="WIDTH: 180px" maxLength=50 name="publish">
 								</td>
@@ -99,11 +108,12 @@ $(function(){
 							<TR>
 								<td>出版时间 ：</td>
 								<td>
+								<!-- <INPUT class=textbox id=sChannel2 style="WIDTH: 180px" maxLength=50 name="publish_time"> -->
 								<INPUT class=textbox id="nextTimeId" style="WIDTH: 180px" maxLength=50 name="publish_time">
 								</td>
 							</TR>
 							<TR>
-								<td>状&nbsp;&nbsp;态 ：</td>
+								<td>状态：</td>
 								<td>
 								<INPUT class=textbox id=sChannel2 style="WIDTH: 180px" maxLength=50 name="state">
 								</td>
