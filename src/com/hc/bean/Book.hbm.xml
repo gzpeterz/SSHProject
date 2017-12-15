@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.hc.bean.Book" table="bookinfo">
+		<id name="bid" column="bid">
+			<generator class="native"/>
+		</id>
+		<property name="bname" column="bname"/>
+		<property name="author" column="author"/>
+		<property name="publish" column="publish"/>
+		<property name="type" column="type"/>
+		<property name="publish_time" column="publish_time"/>
+		<property name="state" column="state"/>
+		
+		<!-- 配置借阅记录映射 -->
+		<!-- <set name="lend" cascade="delete">
+			<key column="bid"></key>		
+			<one-to-many class="com.hc.bean.Lend"/>
+		</set> -->
+		<!-- 配置罚款记录映射 -->
+		<set name="money" cascade="delete">
+			<key column="bid"></key>		
+			<one-to-many class="com.hc.bean.Money"/>
+		</set> 
+	</class>
+	
+</hibernate-mapping> 

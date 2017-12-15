@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="bookManage" extends="struts-default" namespace="/">
+	
+		
+		<!--罚款  -->
+		<action name="money_*" class="moneyAction" method="{1}">
+			<result name="goMove" type="redirect">/jsp/money/add.jsp</result>
+			<result name="findByPage" >/jsp/money/list.jsp</result>
+			<result name="initUpdate" >/jsp/money/edit.jsp</result>
+		</action>	
+		
+		<!--罚款  -->
+		<action name="reader_*" class="readerAction" method="{1}">
+			
+		</action>
+		<!--罚款  -->
+		<action name="book_*" class="bookAction" method="{1}">
+			
+		</action>
+		<!--罚款  -->
+		<action name="lend_*" class="lendAction" method="{1}">
+			
+			
+		</action>
+	</package>
+</struts>
