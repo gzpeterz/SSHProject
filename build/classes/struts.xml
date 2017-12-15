@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="bookManage" extends="struts-default" namespace="/">
+		<!-- 配置全局的结果页面 -->
+		<global-results>
+			<result name="login" type="redirect">/login.jsp</result>
+		</global-results>
+		
+		<!-- 验证码 -->
+		<action name="vCode" class="com.hc.utils.Vcode" ></action>
+	
+		<!-- 用户模块 -->
+		<action name="user_*" class="userAction" method="{1}">
+			<result name="index" type="redirect">/index.jsp</result>
+		</action>
+	
+		<!-- 数据字典模块 -->
+		<action name="dict_*" class="dictAction" method="{1}"></action>
+		
+		<!-- 图书管理模块 -->
+		<action name="book_*" class="bookAction" method="{1}">
+			<!-- 管理员 -->
+			<result name="initAddUI" type="redirect">/jsp/book/add.jsp</result>
+			<result name="findByPage">/jsp/book/list.jsp</result>
+			<result name="initUpdate">/jsp/book/edit.jsp</result>
+			<result name="update" type="redirectAction">book_findByPage.action</result>
+			<result name="delete" type="chain">book_findByPage</result>
+			<!-- <result name="delete" type="redirectAction">book_findByPage.action</result> -->
+			<result name="findByPages">/jsp/book/list2.jsp</result>
+		</action>
+		
+		<action name="reader_*" class="readerAction" method="{1}">
+		    <result name="initAddUI" type="redirect">/jsp/reader/add.jsp</result>
+		    <result name="findByPage">/jsp/reader/list.jsp</result>
+		    <result name="initUpdate">/jsp/reader/edit.jsp</result>
+		    <result name="update" type="redirectAction">reader_findByPage.action</result>
+		    <result name="delete" type="chain">reader_findByPage</result>
+		    <result name="findByPages">/jsp/reader/list2.jsp</result>
+		</action>
+	</package>
+</struts>
